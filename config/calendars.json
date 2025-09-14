@@ -1,0 +1,116 @@
+{
+    "calendari": {
+      "0meaB6MFJkdqyukhwvCL": "🟡📦 Consegna Apparecchio 'Cementazione RPE'",
+      "1ckI1rKWPJb1SiIv7Nws": "🟡 Appuntamento Conoscitivo (6-10)",
+      "83LlZ8Bp8dkVVFrvzEJi": "🟢📦 Consegna Apparecchio 'Consegna apparecchio + Smile Box'",
+      "B1KC1D0UD2t9AirkYo3C": "🟠 Visite di prevenzione",
+      "By5c7BPurxH3JaIS5EsH": "🟡 Check Ortodontica",
+      "MCLmXSpExZO4ldHgnJqJ": "🟢 Appuntamento Conoscitivo (over18)",
+      "MYLJhtem6j825xqvho2T": "🟡 Seduta di rivalutazione ortodontica (6-10)",
+      "OThgItU7gtW4iuuzWWrO": "↺ Altri tipi di prestazioni",
+      "RLfqDqOX6J1PczW8vWxQ": "🟠 Appuntamento conoscitivo (0-16)",
+      "a34CmtdslNIfi63HkYuB": "🟡 Appuntamento Chiusura (6-10)",
+      "jIUyWehWoICuJQJnhkaD": "Chiamata Telefonica Pasciuti",
+      "nC5mdb4Sr6fVWm71jX1Z": "🎉 Family & Friends",
+      "oYiQaI2GHt4r3Cexxr8y": "🟢 Appuntamento Chiusura (over18)",
+      "qiuOy1ps5fNEnEfKoj4H": "😁 Calendario Merenda",
+      "wp7mKPGK47SqFsNLHtZb": "🪥 Igiene Orale Dentizione Permanente",
+      "z3DSANVjQPZfdaWMH2ly": "🟡📦 Consegna Apparecchio 'Kids Experience'"
+    },
+    "prestazioni": {
+      "DSE": {
+        "descrizione": "DIAMOND SMILE EXPERIENCE : Terapia Ortodontica con allineatori invisibili (Consegna allineatori - Visite di controllo - Rimozione apparecchiatura)",
+        "calendario_id": "83LlZ8Bp8dkVVFrvzEJi"
+      },
+      "GSE": {
+        "descrizione": "GOLD SMILE EXPERIENCE : Terapia Ortodontica con allineatori invisibili (Consegna allineatori - Visite di controllo - Rimozione apparecchiatura)",
+        "calendario_id": "83LlZ8Bp8dkVVFrvzEJi"
+      },
+      "RPE": {
+        "descrizione": "Terapia intercettiva con disgiuntore rapido del palato (Applicazione apparecchiatura - Visite di controllo - Rimozione apparecchiatura)",
+        "calendario_id": "0meaB6MFJkdqyukhwvCL"
+      },
+      "PSE": {
+        "descrizione": "PLATINUM SMILE EXPERIENCE : Terapia Ortodontica allineatori invisibili (Consegna allineatori - Visite di controllo - Rimozione apparecchiatura)",
+        "calendario_id": "83LlZ8Bp8dkVVFrvzEJi"
+      },
+      "VP0": {
+        "descrizione": "Visita pedodontica gratuita",
+        "calendario_id": "RLfqDqOX6J1PczW8vWxQ"
+      },
+      "KIDS": {
+        "descrizione": "Kids Experience - Trattamento ortodontico con allineatori per piccoli talenti (Applicazione apparecchiatura - Visite di controllo - Rimozione apparecchiatura - Prima contenzione di mantenimento)",
+        "calendario_id": "z3DSANVjQPZfdaWMH2ly"
+      },
+      "KIDSM": {
+        "descrizione": "Kids Experience - Trattamento ortodontico con allineatori per piccoli talenti Monoarcata (Radiografie - Scansione - Foto - Applicazione apparecchiatura - Visite di controllo - Rimozione apparecchiatura - Prima contenzione di mantenimento)",
+        "calendario_id": "z3DSANVjQPZfdaWMH2ly"
+      },
+      "VPS": {
+        "descrizione": "Visita odontoiatrico specialistica di odontoiatria pediatrica (Medico odontoiatra professionista in campo pediatrico)",
+        "calendario_id": "RLfqDqOX6J1PczW8vWxQ"
+      },
+      "VOE": {
+        "descrizione": "Ortho experience (Visita odontoiatrica specialistica ortodontica eseguita dal dr Enzo Pasciuti ed esami diagnostici specifici)",
+        "calendario_id": "MCLmXSpExZO4ldHgnJqJ"
+      },
+      "CPP": {
+        "descrizione": "Controllo periodico pedodontico",
+        "calendario_id": "B1KC1D0UD2t9AirkYo3C"
+      },
+      "DVPS": {
+        "descrizione": "Duplicazione Prima Visita Specialistica Di Odontoiatria Pediatrica",
+        "calendario_id": "RLfqDqOX6J1PczW8vWxQ"
+      },
+      "SPK7": {
+        "descrizione": "SPK7 Spark Seven (Radiografie - Foto - Scansione intraorale - Simulazione 3D - Consegna allineatori - Visite di controllo - Rimozione apparecchiatura)",
+        "calendario_id": "83LlZ8Bp8dkVVFrvzEJi"
+      },
+      "SPK10": {
+        "descrizione": "Spark Ten (Radiografie - Foto - Scansione intraorale - Simulazione 3D - Consegna allineatori - Visite di controllo - Rimozione apparecchiatura) (IVI7)",
+        "calendario_id": "83LlZ8Bp8dkVVFrvzEJi"
+      },
+      "CP0": {
+        "descrizione": "Controllo Periodico di Odontoiatria Pediatrica",
+        "calendario_id": "B1KC1D0UD2t9AirkYo3C"
+      },
+      "SR0": {
+        "descrizione": "Seduta di rivalutazione ortodontica",
+        "calendario_id": "MYLJhtem6j825xqvho2T"
+      }
+    },
+    "excluded_labels": [
+      "Duraphat°",
+      "Estrazione semplice"
+    ],
+    "special_labels": {
+      "VOB": {
+        "descrizione": "Visita medico-odontoiatrica specialistica ortodontica",
+        "under18": "1ckI1rKWPJb1SiIv7Nws",
+        "over18": "MCLmXSpExZO4ldHgnJqJ"
+      },
+      "DVOB": {
+        "descrizione": "Duplicazione Prima Visita Specialistica Ortodontica",
+        "under18": "1ckI1rKWPJb1SiIv7Nws",
+        "over18": "MCLmXSpExZO4ldHgnJqJ"
+      },
+      "OPY": {
+        "descrizione": "Valutazione Ortodontica Openday Dr Enzo Pasciuti",
+        "under18": "1ckI1rKWPJb1SiIv7Nws",
+        "over18": "MCLmXSpExZO4ldHgnJqJ"
+      },
+      "VAO": {
+        "descrizione": "Valutazione medico-odontoiatrica specialistica ortodontica (Valutazione specialistica ortodontica con dr. Enzo Pasciuti medico odontoiatra specialista in ortognatodonzia)",
+        "under18": "1ckI1rKWPJb1SiIv7Nws",
+        "over18": "MCLmXSpExZO4ldHgnJqJ"
+      },
+      "VO0": {
+        "descrizione": "Visita ortodontica gratuita",
+        "under18": "1ckI1rKWPJb1SiIv7Nws",
+        "over18": "MCLmXSpExZO4ldHgnJqJ"
+      }
+    },
+    "default_calendar_id": "OThgItU7gtW4iuuzWWrO"
+  }
+  
+  

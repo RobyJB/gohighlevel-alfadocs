@@ -1,0 +1,146 @@
+services:
+  alfadocs-careplan-sync:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: alfadocs_careplan_sync
+    restart: "no"  # Non riavviare automaticamente per evitare loop
+    
+    # Usa rete host per permettere a 'localhost' interno di raggiungere il database esterno
+    network_mode: host
+    
+    # Variabili d'ambiente dal file .env
+    env_file:
+      - .env
+    environment:
+      - TZ=Europe/Rome
+    
+    # Volumi per persistenza dei log
+    volumes:
+      - ./logs:/app/logs:rw
+      - ./alfadocs_careplan_sync.log:/app/alfadocs_careplan_sync.log:rw
+    
+    # Configurazioni di sicurezza
+    security_opt:
+      - no-new-privileges:true
+    
+    # Limiti di risorse
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+    
+    # Health check per monitorare lo stato del container
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import psycopg2; print('OK')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    # Dipende da PostgreSQL se avviato insieme (opzionale)
+    # depends_on:
+    #   - postgres
+    
+    # Comando personalizzabile
+    command: ${CAREPLAN_COMMAND:-python3 alfadocs_careplan_sync.py}  # Usa variabile d'ambiente per il comando
+
+  alfadocs-patients-sync:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: alfadocs_patients_sync
+    restart: "no"  # Non riavvia automaticamente perché deve eseguire una sola volta
+    network_mode: host
+    env_file:
+      - .env
+    environment:
+      - TZ=Europe/Rome
+    volumes:
+      - ./logs:/app/logs:rw
+      - ./alfadocs_patients_sync.log:/app/alfadocs_patients_sync.log:rw
+    security_opt:
+      - no-new-privileges:true
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import psycopg2; print('OK')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    command: ${PATIENTS_COMMAND:-python3 alfadocs_patients_sync.py}  # Esegue il sync pazienti
+
+  alfadocs-ghl-sync:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: alfadocs_ghl_sync
+    restart: "no"  # Non riavviare automaticamente perché è richiamato dal deploy
+    network_mode: host
+    env_file:
+      - .env
+    environment:
+      - TZ=Europe/Rome
+    volumes:
+      - ./logs:/app/logs:rw  # Log condivisi
+      - ./logs/ghl_sync.log:/app/logs/ghl_sync.log:rw
+      - ./logs/ghl_sync_errors.log:/app/logs/ghl_sync_errors.log:rw
+    security_opt:
+      - no-new-privileges:true
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: '0.5'
+        reservations:
+          memory: 256M
+          cpus: '0.25'
+    healthcheck:
+      test: ["CMD", "python3", "-c", "import psycopg2; print('OK')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    command: ${GHL_COMMAND:-python3 ghl_sync.py}
+
+  # Container per script di test/debug
+  alfadocs-debug:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: alfadocs_debug
+    restart: "no"
+    
+    env_file:
+      - .env
+    environment:
+      - TZ=Europe/Rome
+    
+    volumes:
+      - ./logs:/app/logs:rw
+      - .:/app:rw
+    
+    networks:
+      - alfadocs_network
+    
+    # Mantiene il container attivo per debug
+    command: ["tail", "-f", "/dev/null"]
+
+networks:
+  alfadocs_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local 

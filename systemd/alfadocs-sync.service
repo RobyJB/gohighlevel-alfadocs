@@ -1,0 +1,28 @@
+# Unità systemd per il deploy dei servizi AlfaDocs
+# Esegue `deploy.sh production` e mantiene in esecuzione anche dopo disconnessioni o reboot
+[Unit]
+Description=Servizio sincronizzazione AlfaDocs (deploy.sh production)
+After=network.target docker.service
+Requires=docker.service
+
+[Service]
+# Imposta la cartella di lavoro dove risiede il progetto
+WorkingDirectory=/root/alfadocs_squadd
+# Utente che esegue il servizio (modifica se necessario)
+User=root
+# Comando principale di avvio
+ExecStart=/bin/bash -lc '/root/alfadocs_squadd/deploy.sh production'
+# Riavvia sempre il servizio se si arresta
+Restart=always
+# Attendi 10 secondi prima di riavviare
+RestartSec=30
+# Uccide l'intero group di processi al `stop`
+KillMode=control-group
+# Esegue il `docker-compose down` sui container al `stop`
+ExecStop=/bin/bash -lc 'cd /root/alfadocs_squadd && (docker-compose -f docker-compose.yml down --volumes --remove-orphans || docker compose -f docker-compose.yml down --volumes --remove-orphans)'
+# Pulisce le risorse Docker inutilizzate dopo lo stop
+ExecStopPost=/usr/bin/docker system prune -f
+
+[Install]
+# Avvia il servizio al boot del sistema
+WantedBy=multi-user.target 
